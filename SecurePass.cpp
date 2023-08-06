@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+using namespace std;
 enum PasswordStrength {
     WEAK,
     MEDIUM,
@@ -9,14 +9,14 @@ enum PasswordStrength {
 };
 
 // Check password length
-bool checkLength(const std::string& password) {
+bool checkLength(const string& password) {
     return password.length() >= 8;
 }
 
 // Check if password contains uppercase letters
-bool checkUppercase(const std::string& password) {
+bool checkUppercase(const string& password) {
     for (char c : password) {
-        if (std::isupper(c)) {
+        if (isupper(c)) {
             return true;
         }
     }
@@ -24,9 +24,9 @@ bool checkUppercase(const std::string& password) {
 }
 
 // Check if password contains lowercase letters
-bool checkLowercase(const std::string& password) {
+bool checkLowercase(const string& password) {
     for (char c : password) {
-        if (std::islower(c)) {
+        if (islower(c)) {
             return true;
         }
     }
@@ -34,9 +34,9 @@ bool checkLowercase(const std::string& password) {
 }
 
 // Check if password contains numbers
-bool checkNumbers(const std::string& password) {
+bool checkNumbers(const string& password) {
     for (char c : password) {
-        if (std::isdigit(c)) {
+        if (isdigit(c)) {
             return true;
         }
     }
@@ -44,9 +44,9 @@ bool checkNumbers(const std::string& password) {
 }
 
 // Check if password contains special characters
-bool checkSpecialCharacters(const std::string& password) {
+bool checkSpecialCharacters(const string& password) {
     for (char c : password) {
-        if (!std::isalnum(c)) {
+        if (! isalnum(c)) {
             return true;
         }
     }
@@ -54,7 +54,7 @@ bool checkSpecialCharacters(const std::string& password) {
 }
 
 // Estimate password strength
-PasswordStrength estimatePasswordStrength(const std::string& password) {
+PasswordStrength estimatePasswordStrength(const string& password) {
     bool hasLength = checkLength(password);
     bool hasUppercase = checkUppercase(password);
     bool hasLowercase = checkLowercase(password);
@@ -71,22 +71,22 @@ PasswordStrength estimatePasswordStrength(const std::string& password) {
 }
 
 int main() {
-    std::string password;
-    std::cout << "Enter a password: ";
-    std::cin >> password;
+    string password;
+    cout << "Enter a password: ";
+    cin >> password;
 
     PasswordStrength strength = estimatePasswordStrength(password);
 
-    std::cout << "Password Strength: ";
+    cout << "Password Strength: ";
     switch (strength) {
         case WEAK:
-            std::cout << "Weak" << std::endl;
+            cout << "Weak" << endl;
             break;
         case MEDIUM:
-            std::cout << "Medium" << std::endl;
+            cout << "Medium" <<endl;
             break;
         case STRONG:
-            std::cout << "Strong" << std::endl;
+            cout << "Strong" <<endl;
             break;
     }
 
